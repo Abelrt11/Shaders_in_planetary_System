@@ -131,7 +131,7 @@ Características
 
 Las constelaciones enriquecen el fondo, aportando mayor inmersión y manteniendo la estética del sistema planetario.
 
-Video de demostración: https://youtu.be/pGywNdpJDZ8
+Video de demostración: https://youtu.be/iFatOMmQ0rE
 
 
 (Codigo de acceso para el codigo en codesandbox: https://codesandbox.io/p/sandbox/tarea-semana-9-shaders-427dkr)
