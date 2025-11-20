@@ -642,8 +642,8 @@ function crearConstelaciones() {
 
   // 1) CASIOPEA 
   const cassioScale = 2.2;
-  const cassioOffsetX = -260; // antes -300
-  const cassioOffsetY = 260; // antes 220
+  const cassioOffsetX = -260;
+  const cassioOffsetY = 260;
 
   const cassiopeia = [
     {
@@ -679,8 +679,8 @@ function crearConstelaciones() {
 
   // 2) ORIÓN 
   const orionScale = 2.4;
-  const orionOffsetX = 40; // antes 0
-  const orionOffsetY = -80; // antes -40
+  const orionOffsetX = 40; 
+  const orionOffsetY = -80; 
 
   const orion = {
     betelgeuse: {
@@ -766,8 +766,8 @@ function crearConstelaciones() {
 
   // 3) OSA MAYOR 
   const dipperScale = 2.4;
-  const dipperOffsetX = 260; // antes 320
-  const dipperOffsetY = 210; // antes 200
+  const dipperOffsetX = 260;
+  const dipperOffsetY = 210;
 
   const bigDipper = [
     {
@@ -831,4 +831,5 @@ function crearConstelaciones() {
   const lines = new THREE.LineSegments(geometry, constellationsMaterial);
   scene.add(lines);
 }
+
 
