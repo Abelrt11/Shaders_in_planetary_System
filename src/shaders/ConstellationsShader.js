@@ -18,33 +18,25 @@ export function createConstellationsMaterial(params = {}) {
   const vertexShader = `
     precision mediump float;
 
-    // Estos los inyecta three.js automáticamente:
-    // uniform mat4 modelViewMatrix;
-    // uniform mat4 projectionMatrix;
-    // uniform vec3 cameraPosition;
-    // attribute vec3 position;
-
     uniform float time;
     uniform float scale;
     uniform float opacity;
     uniform float camFadeDist;
     uniform vec3 color;
 
-    // Nuestro atributo extra para pm_ra, pm_dec (aquí lo dejamos por si quieres usarlo)
     attribute vec2 attributes;
 
     varying vec4 vColor;
 
     void main() {
-      // Posición en la esfera celeste
+
       vec3 pos = position * scale;
       gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
 
-      // Distancia de la cámara al origen
       float camdist = length(cameraPosition);
       float alpha = 1.0 - smoothstep(0.0, camFadeDist, camdist);
 
-      // Pequeño parpadeo suave
+
       float twinkle = 0.85 + 0.15 * sin(time * 0.5);
 
       vColor = vec4(color, opacity * alpha * twinkle);
@@ -67,8 +59,9 @@ export function createConstellationsMaterial(params = {}) {
     vertexShader,
     fragmentShader,
     transparent: true,
-    depthTest: false, // que no las tape la esfera de fondo
+    depthTest: false, 
     depthWrite: false,
     blending: THREE.AdditiveBlending,
   });
 }
+
