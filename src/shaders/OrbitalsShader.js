@@ -2,13 +2,11 @@ import * as THREE from "three";
 
 export function createOrbitalsMaterial(params = {}) {
   const uniforms = {
-    // posición de la "cabeza" de la traza en [0,1]
+  
     u_head: { value: 0.0 },
 
-    // opacidad global
     lucency: { value: params.lucency !== undefined ? params.lucency : 0.8 },
 
-    // color de la órbita
     u_color: {
       value: new THREE.Color(
         params.color !== undefined ? params.color : 0xffffff
@@ -19,7 +17,7 @@ export function createOrbitalsMaterial(params = {}) {
   const vertexShader = `
     precision mediump float;
 
-    // parámetro de la órbita [0,1] para cada vértice
+    
     attribute float aOrbitalPos;
     varying float vOrbitalPos;
 
@@ -39,11 +37,11 @@ export function createOrbitalsMaterial(params = {}) {
     varying float vOrbitalPos;
 
     void main() {
-      // distancia (en el círculo) entre este punto y la cabeza
-      float d = abs(vOrbitalPos - u_head);
-      d = min(d, 1.0 - d); // wrap-around
 
-      // cuanto más cerca de la cabeza, más brillo
+      float d = abs(vOrbitalPos - u_head);
+      d = min(d, 1.0 - d); 
+
+
       float alpha = exp(-d * 40.0) * lucency;
 
       if (alpha < 0.02) discard;
@@ -61,3 +59,4 @@ export function createOrbitalsMaterial(params = {}) {
     blending: THREE.AdditiveBlending,
   });
 }
+
