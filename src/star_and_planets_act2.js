@@ -19,7 +19,7 @@ let estrella;
 let Planetas = [];
 let Lunas = [];
 let objetos = [];
-let Orbitas = []; // <- órbitas con shader
+let Orbitas = []; // órbitas con shader
 let nave = null;
 let controlsSystem;
 
@@ -504,19 +504,19 @@ function animationLoop() {
   timestamp = (Date.now() - t0) * accglobal;
   requestAnimationFrame(animationLoop);
 
-  // Órbita de planetas + sincronizar órbitas shader
+
   for (let i = 0; i < Planetas.length; i++) {
     const planeta = Planetas[i];
     const ud = planeta.userData;
 
-    // ángulo real del planeta
+
     const angle = timestamp * ud.speed;
 
-    // mover planeta
+
     planeta.position.x = Math.cos(angle) * ud.f1 * ud.dist;
     planeta.position.y = Math.sin(angle) * ud.f2 * ud.dist;
 
-    // sincronizar órbita asociada, si existe
+
     const orb = Orbitas[i];
     if (
       orb &&
@@ -639,9 +639,8 @@ function crearConstelaciones() {
     attribs.push(0, 0, 0, 0); // sin movimiento propio (pm_ra, pm_dec)
   }
 
-  // =========================
-  // 1) CASIOPEA (W) - ARRIBA IZQUIERDA, MÁS SEPARADA
-  // =========================
+
+  // 1) CASIOPEA 
   const cassioScale = 2.2;
   const cassioOffsetX = -260; // antes -300
   const cassioOffsetY = 260; // antes 220
@@ -677,9 +676,8 @@ function crearConstelaciones() {
     );
   }
 
-  // =========================
-  // 2) ORIÓN - MÁS CERCA DEL CENTRO Y MÁS SEPARADO DE CASIOPEA
-  // =========================
+
+  // 2) ORIÓN 
   const orionScale = 2.4;
   const orionOffsetX = 40; // antes 0
   const orionOffsetY = -80; // antes -40
@@ -765,9 +763,8 @@ function crearConstelaciones() {
     zFront
   );
 
-  // =========================
-  // 3) OSA MAYOR (BIG DIPPER) - ARRIBA DERECHA, MÁS CERCA DEL CENTRO
-  // =========================
+
+  // 3) OSA MAYOR 
   const dipperScale = 2.4;
   const dipperOffsetX = 260; // antes 320
   const dipperOffsetY = 210; // antes 200
@@ -814,9 +811,6 @@ function crearConstelaciones() {
     );
   }
 
-  // =========================
-  // GEOMETRÍA Y MATERIAL
-  // =========================
   const geometry = new THREE.BufferGeometry();
   geometry.setAttribute(
     "position",
@@ -837,3 +831,4 @@ function crearConstelaciones() {
   const lines = new THREE.LineSegments(geometry, constellationsMaterial);
   scene.add(lines);
 }
+
